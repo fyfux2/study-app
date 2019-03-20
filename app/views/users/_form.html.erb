@@ -1,0 +1,35 @@
+<%= form_with(model: user, local: true) do |form|%>
+
+   <%if user.errors.any?%>
+      <div id="error_explanation">
+         <h2>Kļūdas saglabājot:</h2>
+
+         <ul>
+         <% user.errors.full_messages.each do |message|%>
+         <li><%=message%></li>
+   <%end%>
+
+         </ul>
+      </div>
+<%end%>
+
+    <div>
+       <%= form.label :first_name, "Vārds"%> 
+       <%= form.text_field :first_name%> 
+    </div>
+
+    <div>
+       <%= form.label :last_name, "Uzvārds"%> 
+       <%= form.text_field :last_name%> 
+    </div>
+
+    <div>
+      <%= form.label :teacher, "Vai lietotājs ir pasniedzējs?"%>
+       <%= form.check_box :teacher %>
+    </div>
+
+    <div>
+        <%= form.submit "Saglabāt"%>
+    </div>
+
+<% end %>

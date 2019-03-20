@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+<h1>Lietotājs <%= @user.first_name @user.last_name%></h1>
+
+<p>
+  <strong>Vārds:</strong>
+  <%= @user.first_name %>
+</p>
+
+<p>
+  <strong>Uzvārds:</strong>
+  <%= @user.last_name %>
+</p>
+
+<p>
+  <strong>Lietotāja tips:</strong>
+  <%= user_is_teacher(@user.teacher) %>
+</p>
+
+<%= link_to 'Labot', edit_user_path(@user) %> |
+<%= link_to 'Atpakaļ', user_path %>
