@@ -1,0 +1,55 @@
+<%= form_with(model: course, local: true) do |form|%>
+
+   <%if course.errors.any?%>
+      <div id="error_explanation">
+         <h2>Kļūdas saglabājot:</h2>
+
+         <ul>
+         <% course.errors.full_messages.each do |message|%>
+         <li><%=message%></li>
+   <%end%>
+
+         </ul>
+      </div>
+<%end%>
+
+    <div>
+       <%= form.label :title, "Nosaukums"%> 
+       <%= form.text_field :title%> 
+    </div>
+
+    <div>
+       <%= form.label :description, "Apraksts"%> 
+       <%= form.text_area :description%> 
+    </div>
+
+    <div>
+      <%= form.label :start_date, "Sākuma datums"%>
+       <%= form.date_field :start_date %>
+    </div>
+
+    <div>
+       <%= form.label :end_date, "Beigu datums"%> 
+       <%= form.date_field :end_date%> 
+    </div>
+
+    <div>
+       <%= form.label :min_number, "Minimālais skaits"%> 
+       <%= form.number_field :min_number%> 
+    </div>
+
+    <div>
+      <%= form.label :max_number, "Maksimālais skaits"%>
+       <%= form.number_field :max_number %>
+    </div>
+
+     <div>
+      <%= form.label :user_id, "Pasniedzējs"%>
+      <%= collection_select( :courses, :user_id, User.all, :id, :first_name, prompt: true ) %>
+    </div>
+
+      <div>
+        <%= form.submit "Saglabāt"%>
+    </div>
+
+<% end %>
