@@ -1,0 +1,30 @@
+<%= form_with(model: attendance, local: true) do |form|%>
+
+   <%if attendance.errors.any?%>
+      <div id="error_explanation">
+         <h2>Kļūdas saglabājot:</h2>
+
+         <ul>
+         <% attendance.errors.full_messages.each do |message|%>
+         <li><%=message%></li>
+         <%end%>
+
+         </ul>
+      </div>
+   <%end%>
+
+      <div>
+      <%= form.label :user_id, "Pasniedzējs"%>
+      <%= form.collection_select( :user_id, User.all, :id, :first_name, prompt: true ) %>
+    </div>
+
+      <div>
+      <%= form.label :course_id, "Kurss"%>
+      <%= form.collection_select( :course_id, Course.all, :id, :title, prompt: true ) %>
+    </div>
+
+      <div>
+        <%= form.submit "Saglabāt"%>
+    </div>
+
+<% end %>

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+<h1>Apmeklējums</h1>
+
+<table id="attendances">
+    <thead>
+        <tr>
+            <th>Skolēns</th>
+            <th>Kurss</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <% @attendances.each do |attendance| %>
+
+            <tr data-attendance-id="<%= attendance.id %>">
+                <td data-attendance-attribute="user_id">
+                <%= attendance.user.first_name %> <%= attendance.user.last_name%></td>
+                <td data-attendance-attribute="course_id"><%= attendance.course.title %></td>
+               
+                <td><%= link_to 'Apskatīt', attendance_path(attendance) %></td>
+                <td><%= link_to 'Labot', edit_attendance_path(attendance) %></td>  
+                <td><%= link_to 'Dzēst', attendance_path(attendance), method: :delete, 
+                data: { confirm: 'Vai esat drošs, ka vēlaties dzēst ierakstu?'} %></td>
+            </tr>
+
+        <% end %>
+    </tbody>
+
+</table>
+
+<%= link_to 'Jauns ieraksts', new_attendance_path %>  

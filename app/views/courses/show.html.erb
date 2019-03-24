@@ -1,2 +1,40 @@
-<h1>Courses#show</h1>
-<p>Find me in app/views/courses/show.html.erb</p>
+<p id="notice"><%= notice %></p>
+<h1><%= @course.title%></h1>
+
+<p>
+  <strong>Nosaukums:</strong>
+  <%= @course.title %>
+</p>
+
+<p>
+  <strong>Apraksts:</strong>
+  <%= @course.description %>
+</p>
+
+<p>
+  <strong>Sākuma datums:</strong>
+  <%= @course.start_date %>
+</p>
+
+<p>
+  <strong>Beigu datums:</strong>
+  <%= @course.end_date %>
+</p>
+
+<p>
+  <strong>Min skaits:</strong>
+  <%= @course.min_number %>
+</p>
+
+<p>
+  <strong>Max skaits:</strong>
+  <%= @course.max_number %>
+</p>
+
+<p>
+  <strong>Pasniedzējs:</strong>
+  <%= @course.user.first_name %>  <%= @course.user.last_name %>
+</p>
+
+<%= link_to 'Labot', edit_course_path(@course) %> |
+<%= link_to 'Atpakaļ', courses_path %>

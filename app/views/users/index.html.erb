@@ -17,7 +17,8 @@
                 <td data-user-attribute="first_name"><%= user.first_name %></td>
                 <td data-user-attribute="last_name"><%= user.last_name %></td>
                 <td data-user-attribute="type"><%= user_is_teacher(user.teacher) %></td>
-                <td><%= link_to 'Apskatīt', user_path(user), method: :show %></td>
+                <td><%= link_to 'Apskatīt', user_path(user) %>
+                </td>
                 <td><%= link_to 'Labot', edit_user_path(user) %></td>  
                 <td><%= link_to 'Dzēst', user_path(user), method: :delete, 
                 data: { confirm: 'Vai esat drošs, ka vēlaties dzēst ierakstu?'} %></td>

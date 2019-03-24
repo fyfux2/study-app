@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<h1>Lietotājs <%= @user.first_name @user.last_name%></h1>
+<h1>Lietotājs <%= @user.first_name %></h1>
 
 <p>
   <strong>Vārds:</strong>
@@ -17,4 +17,4 @@
 </p>
 
 <%= link_to 'Labot', edit_user_path(@user) %> |
-<%= link_to 'Atpakaļ', user_path %>
+<%= link_to 'Atpakaļ', users_path %>

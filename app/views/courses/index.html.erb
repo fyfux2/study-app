@@ -18,13 +18,13 @@
         <% @courses.each do |course| %>
 
             <tr data-course-id="<%= course.id %>">
-                <td data-course-attribute="title"><%= link_to course.title, course_path(course), method: :show %></td>
+                <td data-course-attribute="title"><%= link_to course.title, course_path(course) %></td>
                 <td data-course-attribute="description"><%= course.description %></td>
                 <td data-course-attribute="start_date"><%= course.start_date %></td>
                 <td data-course-attribute="end_date"><%= course.end_date %></td>
                 <td data-course-attribute="min_number"><%= course.min_number %></td>
                 <td data-course-attribute="max_number"><%= course.max_number %></td>
-                <td data-course-attribute="user_id"><%= course.user_id %></td>
+                <td data-course-attribute="user_id"><%= course.user.first_name %><%= course.user.last_name %></td>
 
                 <td><%= link_to 'Labot', edit_course_path(course) %></td>  
                 <td><%= link_to 'Dzēst', course_path(course), method: :delete, 

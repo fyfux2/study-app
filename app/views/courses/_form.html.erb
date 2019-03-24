@@ -45,7 +45,7 @@
 
      <div>
       <%= form.label :user_id, "Pasniedzējs"%>
-      <%= collection_select( :courses, :user_id, User.all, :id, :first_name, prompt: true ) %>
+      <%= form.collection_select( :user_id, User.all, :id, :first_name, prompt: true ) %>
     </div>
 
       <div>
