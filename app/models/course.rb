@@ -25,13 +25,13 @@ class Course < ApplicationRecord
 
   def min_users_reached
     if count_students >= min_number
-      if start_date >= Date.current
-        'Minimālais dalībnieku skaits ir sasniegts'
-      else
-        'Pieteikšanās kursam ir beigusies'
-      end
+      'Minimālais dalībnieku skaits ir sasniegts'
     else
-      'Lai kurss varētu sākties nepieciešami vēl ' + till_start.to_s + ' dalībnieki'
+      if start_date >= Date.current
+        'Lai kurss varētu sākties nepieciešami vēl ' + till_start.to_s + ' dalībnieki'
+      else
+        'Kurss nenotiks, minimālais skaits netika sasniegts'
+      end
     end
   end
 
@@ -50,10 +50,14 @@ class Course < ApplicationRecord
   end
 
   def already_ended
-    if end_date < Date.current
+    if end_date < Date.current && min_number <= count_students
       'Kurss ir beidzies'
+    elsif start_date <= Date.current && end_date >= Date.current && min_number <= count_students
+      'Kurss vēl nav beidzies'
+    elsif start_date >= Date.current
+      'Kurss vēl nav sācies'
     else
-      'Kursa beigu datums vēl nav pienācis'
+      'Kurss ir atcelts'
     end
   end
 
