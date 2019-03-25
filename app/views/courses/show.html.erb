@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<h1><%= @course.title%></h1>
+<h1><%= @course.title%> kurss</h1>
 
 <p>
   <strong>Nosaukums:</strong>
@@ -36,5 +36,38 @@
   <%= @course.user.first_name %>  <%= @course.user.last_name %>
 </p>
 
+<p>
+<%= @course.already_started %>
+</p>
+<p>
+<%= @course.already_ended %>
+</p>
+
+<p>
+  <strong> </strong>
+</p>
+
 <%= link_to 'Labot', edit_course_path(@course) %> |
 <%= link_to 'Atpakaļ', courses_path %>
+
+<p>
+<h2>Kursam pieteikto dalībnieku saraksts:</h2>
+<table id="course_attendance">
+    <thead>
+        <tr>
+            <th>Vārds</th>
+            <th>Uzvārds</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <% @course.users.each do |user| %>
+
+            <tr data-user-id="<%= user.id %>">
+                <td data-user-attribute="first_name"><%= user.first_name %></td>
+                <td data-user-attribute="last_name"><%= user.last_name %></td>
+                
+            </tr>
+
+        <% end %>
+    </tbody>

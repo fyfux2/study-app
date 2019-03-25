@@ -25,6 +25,8 @@
                 <td data-course-attribute="min_number"><%= course.min_number %></td>
                 <td data-course-attribute="max_number"><%= course.max_number %></td>
                 <td data-course-attribute="user_id"><%= course.user.first_name %><%= course.user.last_name %></td>
+                <td data-course-attribute="already_started"</td><%= course.already_started %>
+                <td data-course-attribute="already_ended"</td><%= course.already_ended %>
 
                 <td><%= link_to 'Labot', edit_course_path(course) %></td>  
                 <td><%= link_to 'Dzēst', course_path(course), method: :delete, 

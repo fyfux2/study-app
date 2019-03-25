@@ -1,0 +1,25 @@
+ <div id="header">
+  <div id="logo">
+    <div id="logo_text">
+      <h1>
+        <%= link_to root_path do %>
+          Kursi <span class="logo_colour">2019</span> 
+        <% end %>
+      </h1>
+
+    </div>
+  </div>
+<div id="menubar">
+<nav class="navbar navbar-inverted">
+  <div class="container-fluid">
+     
+      <ul class="nav navbar-nav navbar-right">
+      <li class="<%= "selected" if controller_name == 'courses' %>"><%= link_to 'Kursi', root_path %></li>
+      <li class="<%= "selected" if controller_name == 'users' %>"><%= link_to 'Lietotāji', users_path %></li>
+      <li class="<%= "selected" if controller_name == 'attendances' %>"><%= link_to 'Apmeklējums', attendances_path %></li>
+
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</div>
+</nav>
