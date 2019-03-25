@@ -15,13 +15,35 @@ class Course < ApplicationRecord
   validate :end_from_now, if: -> { end_date.present? }
   validates :min_number, :max_number, numericality: { greater_than_or_equal_to: 0 }
 
-  #def 
-  #  Jābūt attēlotai pazīmei vai ir sasniegts minimālais studentu skaits;
-  #end
+  def count_students
+    Attendance.where(course_id: id).count
+  end
+
+  def till_start
+    min_number - count_students
+  end
+
+  def min_users_reached
+    if count_students >= min_number
+      if start_date >= Date.current
+        'Minimālais dalībnieku skaits ir sasniegts'
+      else
+        'Pieteikšanās kursam ir beigusies'
+      end
+    else
+      'Lai kurss varētu sākties nepieciešami vēl ' + till_start.to_s + ' dalībnieki'
+    end
+  end
 
   def already_started
     if start_date < Date.current
-      'Pieteikšanās ir beigusies'
+      if count_students < min_number
+        'Kurss ir atcelts, minimālais skaits netika sasniegts'
+      else
+        'Pieteikšanās ir beigusies, kurss ir sācies'
+      end
+    elsif count_students >= max_number
+      'Maksimālais skaits ir sasniegts, pieteikšanās ir beigusies'
     else
       'Kurss vēl nav sācies'
     end
@@ -31,7 +53,7 @@ class Course < ApplicationRecord
     if end_date < Date.current
       'Kurss ir beidzies'
     else
-      'Kurss vēl nav beidzies'
+      'Kursa beigu datums vēl nav pienācis'
     end
   end
 

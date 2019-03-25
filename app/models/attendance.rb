@@ -2,11 +2,10 @@ class Attendance < ApplicationRecord
   belongs_to :user
   belongs_to :course
 
+  
   validate :already_ended, if: -> { user_id.present? }
   validate :teachers_in_courses, if: -> { course_id.present? }
-  
-  
-  #validate :max_attendees, if: -> { course_id.present? }
+  validate :max_attendees, if: -> { course_id.present? }
 
   private
 
@@ -15,15 +14,11 @@ class Attendance < ApplicationRecord
     user.id == course.user_id
   end
 
-  #def max_attendees
-  #  errors.add(:base, 'Maksimālais dalībnieku skaits kursā ir pāsniegts!') if Attendance.count(user_id, :conditions => course_id) > Course.max_number
-  #end
-
-  #def validate_if_unique
-
-  #end
+  def max_attendees
+    errors.add(:base, 'Maksimālais dalībnieku skaits kursā ir pārsniegts, lūdzu izvēlieties citu kursu!') if course.count_students >= course.max_number
+  end
 
   def already_ended
-    errors.add(:base, 'Pieteikšanās uz kursu ir beigusies!') if course.start_date < Date.current
+    errors.add(:base, 'Pieteikšanās uz kursu ir beigusies, lūdzu izvēlieties citu kursu!') if course.start_date < Date.current
   end
 end

@@ -8,8 +8,8 @@
             <th>Apraksts</th>
             <th>Sākuma datums</th>
             <th>Beigu datums</th>
-            <th>Minimālais pieteikumu skaits</th>
-            <th>Maksimālais pieteikumu skaits</th>
+            <th>Min</th>
+            <th>Max</th>
             <th>Pasniedzējs</th>
         </tr>
     </thead>
@@ -27,6 +27,7 @@
                 <td data-course-attribute="user_id"><%= course.user.first_name %><%= course.user.last_name %></td>
                 <td data-course-attribute="already_started"</td><%= course.already_started %>
                 <td data-course-attribute="already_ended"</td><%= course.already_ended %>
+                <td data-course-attribute="min_users_reached"</td><%= course.min_users_reached %>
 
                 <td><%= link_to 'Labot', edit_course_path(course) %></td>  
                 <td><%= link_to 'Dzēst', course_path(course), method: :delete, 
@@ -37,5 +38,5 @@
     </tbody>
 
 </table>
-
 <%= link_to 'Jauns kurss', new_course_path %>  
+

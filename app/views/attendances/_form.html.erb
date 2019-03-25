@@ -18,12 +18,12 @@
       <%= form.label :user_id, "Dalībnieks"%>
       <%= form.collection_select( :user_id, User.all, :id, :user_value, prompt: true ) %>
     </div>  
-  
+  <br><br><br>
       <div>
       <%= form.label :course_id, "Kurss"%>
       <%= form.collection_select( :course_id, Course.all, :id, :title, prompt: true ) %>
     </div>
-
+   <br><br><br><br>
       <div>
         <%= form.submit "Saglabāt"%>
     </div>

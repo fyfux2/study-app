@@ -47,7 +47,7 @@
       <%= form.label :user_id, "Pasniedzējs"%>
       <%= form.collection_select( :user_id, User.where(teacher: true), :id, :user_value, prompt: true ) %>
     </div>
-
+   <br><br><br><br>
       <div>
         <%= form.submit "Saglabāt"%>
     </div>

@@ -9,7 +9,7 @@ body
 { font: normal .80em 'trebuchet ms', arial, sans-serif;
   background: rgb(255, 255, 255);
   color: #555;
-  max-width: 800px;
+  max-width: 900px;
   margin: auto;
   }
 content {
@@ -246,15 +246,15 @@ ul li a:hover
   padding: 28px 0 5px 0;
   text-align: center;
   background: transparent url(pattern.png) repeat;
-  border-top: 2px solid #E7746F;
-  color: #FFF;}
+  border-top: 2px solid rgb(105, 135, 146);
+  color: rgb(105, 135, 146);}
 
 #footer p
 { line-height: 1.7em;
   padding: 0 0 10px 0;}
 
 #footer a
-{ color: #E7746F;
+{ color:  rgb(105, 135, 146);
   text-decoration: none;}
 
 #footer a:hover
@@ -274,10 +274,12 @@ form
 form div.field
 { padding: 0 0 4px 0;}
 
-form span, form label, form select, form .field_with_errors
+form span, form label, form select
 { float: left;
   width: 150px;
   text-align: left;}
+
+
 
 form input, form textarea
 { padding: 5px;
